@@ -11,44 +11,128 @@
   height: 100%;
   padding: 0;
   margin: 0;
-  background: rgb(60, 60, 60);
+  background-image: url(https://anhdepfree.com/wp-content/uploads/2021/03/hinh-anh-bau-troi-vu-tru-55081-2048x1365.jpg);
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
 }
 canvas {
   position: absolute;
   width: 100%;
   height: 100%;
 }
-.text{
-    padding:20px;
-    color:rgb(220, 147, 120);
-    font-size: 30px;
-    transform: translate(40px,50px);
-    display: inline-block;
-    transition: .5s;
-    background-color: rgb(90, 197, 213);
-    border-radius: 10px;
-    font-weight: 600;
-    cursor: pointer;
+
+
+
+
+#heart { 
     position: absolute;
-    top:50%;
-    left:50%;
+    width: 300px;
+    height: 270px;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%,-50%);
+} 
+
+#heart:before, #heart:after { 
+  position: absolute;
+    content: "";
+    left: 150px;
+    top: -30;
+    width: 201px;
+    height: 336px;
+    background: red;
+    border-radius: 100px 100px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%; 
+} 
+
+#heart:after { 
+  left: -50px;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
 }
+.box{
+  position: absolute;
+  top:70%;
+  left:10%;
+  animation: wa 15s linear infinite;
+  width:300px;
+}
+img{
+  transform: rotate(-30deg);
+
+}
+
+.text{
+  position: absolute;
+  top:0%;
+  left:100px;
+  font-size: 20px;
+  padding:10px;
+  color:rgb(211, 90, 45);   
+  background-color: rgb(90, 197, 213);
+  border-radius: 10px;
+  animation: wa2 11s linear infinite;
+}
+
+@keyframes wa{
+  0%{
+    left:-10%;
+
+  }
+  40%{
+    left:30%;
+    top:90%;
+    transform: rotate(30deg);
+
+  }
+  70%{
+    left:80%;
+    top:60%;
+    transform: rotate(0deg);
+
+  }
+  100%{
+    left:110%;
+    top:30%;
+    transform: rotate(20deg);
+
+  }
+}
+
+@keyframes wa2{
+  0%{
+    opacity: 0;
+
+  }
+  20%{
+    opacity: 1;
+
+  }
+  90%{
+    opacity: 1;
+
+  }
+  100%{
+    opacity: 0;
+  }
+}
+
   </style>
  </HEAD>
  <BODY>
   <canvas id="pinkboard"></canvas>
   <div id="particles-js"></div>
-  <div class="text">Chào Thủy nhé</div>
+  <div id="heart"></div>
+  <div class="box">
+    <img src="db.png" alt="" width="120px">
+    <div class="text"> Ngủ sớm đi nhé !!!</div>
+  </div>
+
   <script src="particles.js"></script>
   <script src="app.js"></script>
-  <script>
-    let text=document.querySelector('.text');
-    text.addEventListener('click',()=>{
-        alert('Bạn ngủ chưa nhỉ !!!')
 
-    })
-  </script>
   <script>
   /*
  * Settings
@@ -233,7 +317,7 @@ var ParticlePool = (function() {
     }
     context.closePath();
     // create the fill
-    context.fillStyle = 'rgb(79, 201, 113)';
+    context.fillStyle = '#dff9fb';
     context.fill();
     // create the image
     var image = new Image();
