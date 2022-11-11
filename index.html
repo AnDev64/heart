@@ -23,35 +23,6 @@ canvas {
 }
 
 
-
-
-#heart { 
-    position: absolute;
-    width: 300px;
-    height: 270px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-} 
-
-#heart:before, #heart:after { 
-  position: absolute;
-    content: "";
-    left: 150px;
-    top: -30;
-    width: 201px;
-    height: 336px;
-    background: red;
-    border-radius: 100px 100px 0 0;
-    transform: rotate(-45deg);
-    transform-origin: 0 100%; 
-} 
-
-#heart:after { 
-  left: -50px;
-    transform: rotate(45deg);
-    transform-origin: 100% 100%;
-}
 .box{
   position: absolute;
   top:70%;
@@ -59,9 +30,37 @@ canvas {
   animation: wa 15s linear infinite;
   width:300px;
 }
-img{
+.box img{
   transform: rotate(-30deg);
 
+}
+
+.img-heart{
+  width: 380px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  --_m: radial-gradient(#000 69%,#0000 70%) 84.5% fill/100%;
+  -webkit-mask-box-image: var(--_m);
+             mask-border: var(--_m);
+  clip-path: polygon(-41% 0,50% 91%, 141% 0);
+  position: absolute;
+  top:52%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  background-position: center;
+  background-size: cover;
+}
+
+/* fallback until better support for mask-border */
+@supports not (-webkit-mask-box-image: var(--_m)) { 
+  img {
+   --_m:
+     radial-gradient(circle at 60% 63%,#000 64%,#0000 65%) top left /50% 50% no-repeat,
+     radial-gradient(circle at 40% 63%,#000 64%,#0000 65%) top right/50% 50% no-repeat,
+     linear-gradient(#000 0 0) bottom/100% 50% no-repeat;
+   -webkit-mask: var(--_m);
+           mask: var(--_m);
+  }
 }
 
 .text{
@@ -124,7 +123,8 @@ img{
  <BODY>
   <canvas id="pinkboard"></canvas>
   <div id="particles-js"></div>
-  <div id="heart"></div>
+  <img class="img-heart" src="https://scontent.fhan2-5.fna.fbcdn.net/v/t39.30808-6/315302045_1671235973349454_2305155973807916373_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=nW6I8XcnzZcAX9B0kPb&tn=8AReaDLYkVcSAr9A&_nc_ht=scontent.fhan2-5.fna&oh=00_AfDa53Z93Ck5DVKWSZs3RYwcNuzuVmnvVnvNYkKn18lfmw&oe=6373DBC3" alt="">
+
   <div class="box">
     <img src="db.png" alt="" width="120px">
     <div class="text"> Ngủ sớm đi nhé !!!</div>
